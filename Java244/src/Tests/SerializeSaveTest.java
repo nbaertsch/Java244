@@ -5,7 +5,9 @@
  */
 package Tests;
 
-import Entities.*;
+import TimeLine.Computer;
+import TimeLine.Person;
+import TimeLine.TimelineItem;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
