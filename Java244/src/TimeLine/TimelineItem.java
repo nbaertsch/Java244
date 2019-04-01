@@ -13,9 +13,18 @@ package TimeLine;
  */
 
 import java.awt.Image;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Superclass for all TimelineItems
@@ -23,29 +32,57 @@ import java.util.Objects;
  */
 public class TimelineItem implements Comparable<TimelineItem>, Serializable{
     // base timelineItem attributes
-    private LocalDate date;
+    private LocalDateTime entryDate;
+    private LocalDate eventDate;
     private String title;
     private String desc;
     private Image image;
     
-    public TimelineItem(LocalDate date, String title){
-        this.date = date;
-        this.title = title;
+    @Override
+    public String toString(){
+        return this.title;
     }
     
+    /**
+     * 
+     * @param entryDate moment in time this event was created
+     * @param title 
+     */
+    public TimelineItem(LocalDateTime entryDate){
+        this.entryDate = entryDate;
+        this.title = "TITLE";
+        this.desc = "DESCRIPTION";
+        this.eventDate = this.entryDate.toLocalDate();
+    }
+    
+    
+    /**
+     * 
+     * @param tli
+     * @return 
+     */
     @Override
     public int compareTo(TimelineItem tli) {
-        return this.getDate().compareTo(tli.getDate());
+        return this.getEventDate().compareTo(tli.getEventDate());
     }
 
+    /**
+     * 
+     * @return 
+     */
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 73 * hash + Objects.hashCode(this.date);
+        hash = 73 * hash + Objects.hashCode(this.eventDate);
         hash = 73 * hash + Objects.hashCode(this.title);
         return hash;
     }
 
+    /**
+     * 
+     * @param obj
+     * @return 
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -61,7 +98,7 @@ public class TimelineItem implements Comparable<TimelineItem>, Serializable{
         if (!Objects.equals(this.title, other.title)) {
             return false;
         }
-        if (!Objects.equals(this.date, other.date)) {
+        if (!Objects.equals(this.eventDate, other.eventDate)) {
             return false;
         }
         return true;
@@ -70,17 +107,17 @@ public class TimelineItem implements Comparable<TimelineItem>, Serializable{
     
 
     /**
-     * @return the date
+     * @return the eventDate
      */
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getEventDate() {
+        return eventDate;
     }
 
     /**
-     * @param date the date to set
+     * @param eventDate the eventDate to set
      */
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setEventDate(LocalDate eventDate) {
+        this.eventDate = eventDate;
     }
 
     /**
@@ -124,5 +161,19 @@ public class TimelineItem implements Comparable<TimelineItem>, Serializable{
     public void setImage(Image image) {
         this.image = image;
     }
-    
+
+    /**
+     * @return the entryDate
+     */
+    public LocalDateTime getEntryDate() {
+        return entryDate;
+    }
+
+    /**
+     * @param entryDate the entryDate to set
+     */
+    public void setEntryDate(LocalDateTime entryDate) {
+        this.entryDate = entryDate;
+    }
+
 }

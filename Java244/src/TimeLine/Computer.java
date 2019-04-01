@@ -5,7 +5,7 @@
  */
 package TimeLine;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -18,8 +18,8 @@ public class Computer extends TimelineItem{
     private int hz;
     private String manufacturer;
     
-    public Computer(LocalDate date, String title){
-        super(date, title);
+    public Computer(LocalDateTime entryDate){
+        super(entryDate);
     }
     
     /**

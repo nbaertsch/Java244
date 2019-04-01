@@ -37,7 +37,7 @@ public class SerializeSaveTest {
         tl.add(new Person(LocalDate.of(1996, 1, 28), "Noah"));
         
         for(TimelineItem tli : tl)
-            System.out.println("Title: " + tli.getTitle() + "   Date: " + tli.getDate().toString());
+            System.out.println("Title: " + tli.getTitle() + "   Date: " + tli.getEventDate().toString());
         
         Collections.sort(tl);
         
@@ -71,7 +71,7 @@ public class SerializeSaveTest {
         }
         
         for(TimelineItem tli : tl)
-            System.out.println("Title: " + tli.getTitle() + "   Date: " + tli.getDate().toString());
+            System.out.println("Title: " + tli.getTitle() + "   Date: " + tli.getEventDate().toString());
         
     }
     
