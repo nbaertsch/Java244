@@ -31,7 +31,7 @@ public class TestClient {
         }
         System.out.println();
         
-        long[] heaptime = s.getHeaptime();
+        long[] heaptime = s.getSortTimes();
         System.out.println("HeapSort returned in " + (heaptime[1] - heaptime[0]) + " miliseconds.");
         
     }

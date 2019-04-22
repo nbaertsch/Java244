@@ -99,7 +99,7 @@ public class Sorter {
         return heap;
     }
     
-    public long[] getHeaptime(){
+    public long[] getSortTimes(){
         return this.heaptime;
     }
     
